@@ -1,0 +1,24 @@
+{
+    "mangas":[
+        {
+        "id":1,
+        "name":"Sakamoto Days",
+        "image":"https://1.bp.blogspot.com/-kz5V9tgtae8/YMS2s4CcUzI/AAAAAAAAR4A/cfW49EWj0IMkehHuzDtn7W9NMbxXe8WMACLcBGAsYHQ/s600/FotoJet%2B%25281%2529.jpg",
+        "sinopse":"Sakamoto Days is a Japanese manga series written and illustrated by Yuto Suzuki. It began serialization in Shueisha's Weekly Shōnen Jump in November 2020.",
+        "created":"2020-09-04",
+        "updated":"2020-09-04"
+        }
+    ],
+    "users":[
+        {
+            "id":1,
+            "role":"admin",
+            "name":"Brunão da Massa",
+            "email":"abfn0905@gmail.com",
+            "password":"",
+            "image":"https://static.wikia.nocookie.net/nier/images/4/40/Ccdimage.jpg/revision/latest?cb=20160919231826",
+            "created":"2020-08-04",
+            "updated":"2020-08-04"
+        }
+    ]
+}

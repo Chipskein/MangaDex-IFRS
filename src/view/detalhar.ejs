@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<%- include('includes/head.ejs',{title:"Mangadex| Detalhar"})%>
+<body>
+    <header>
+        <%- include('includes/navbar.ejs')%>
+    </header>
+    <article class="main">
+        <div class="manga-card">
+            <img src="<%=manga.image%>" alt="Imagem" class="manga-image">
+            <div class="manga-card-div">
+                <a class="manga-name" href="/manga/<%=manga.id%>"><%=manga.name%></a>
+                <p>
+                    <%=manga.sinopse%>
+                </p>
+                <p>
+                    Criado em <%=manga.created_at%>
+                    <br>
+                    Atualizado em <%=manga.updated_at%>
+                </p>
+                <div class="manga-card-delete-button">
+                    <a href="/manga/delete/<%=manga.id%>">Deletar</a>
+                </div>
+            </div>
+        </div>    
+    </article>
+</body>
+</html>
