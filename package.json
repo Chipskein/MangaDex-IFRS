@@ -4,7 +4,8 @@
   "description": "CRUD of manga review sites,to System Development II at IFRS 2022",
   "main": "index.js",
   "scripts": {
-    "dev": "node src/index.js"
+    "dev": "node src/index.js",
+    "reset":"node src/backup_script.js"
   },
   "repository": {
     "type": "git",
