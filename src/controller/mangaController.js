@@ -1,4 +1,4 @@
-const fileService=require('../config/fileService');
+const fileService=require('../utils/fileService');
 class mangaController{
     static listar(req,res){
         const database=fileService.Read();

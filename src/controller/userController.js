@@ -1,4 +1,4 @@
-const fileService=require('../config/fileService');
+const fileService=require('../utils/fileService');
 const { hashSync,compareSync,genSaltSync } = require('bcrypt');
 class UserController{
     static cadastrar(req,res){
