@@ -15,10 +15,19 @@
             "role":"admin",
             "name":"Brunão da Massa",
             "email":"abfn0905@gmail.com",
-            "password":"",
+            "password":"$2b$10$0sq5jgA9O2IP5kIbs0nJPOV8FPwT7lDUHZZbh6E6/pTyNFzhxCH.i",
             "image":"https://static.wikia.nocookie.net/nier/images/4/40/Ccdimage.jpg/revision/latest?cb=20160919231826",
             "created":"2020-08-04",
             "updated":"2020-08-04"
+        }
+    ],
+    "reviews":[
+        {
+            "userid":1,
+            "mangaid":1,
+            "created":"2020-08-04",
+            "updated":"2020-08-04",
+            "text":"some random text"
         }
     ]
 }
