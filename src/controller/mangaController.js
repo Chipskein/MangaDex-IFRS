@@ -17,7 +17,9 @@ class mangaController{
             image:mangaimage,
             sinopse:sinopse,
             created:new Date(),
-            updated:new Date()
+            updated:new Date(),
+            qt_view:0,
+            reviews:[]
         }
         database.mangas.push(manga);
         fileService.Write(database);
@@ -44,7 +46,6 @@ class mangaController{
                 manga=data;
             }
         })
-        console.log(manga);
         if(manga!=false) return res.render('detalhar.ejs',{user:req.session.user,manga:manga});
         else return res.redirect('/manga');
     }
@@ -55,6 +56,26 @@ class mangaController{
         database.mangas.splice(mangaIdx, 1);
         fileService.Write(database);
         return res.redirect('/manga');
+    }
+    static add_review(req,res){
+        const {mangaid,userid,review}=req.body
+        const database=fileService.Read();
+        const manga=database.mangas.find(manga=> manga.id==mangaid);
+        const user=database.users.find(user=>user.id==userid);
+        const size=manga.reviews.length+1;
+        if(user&&manga){
+            delete(user.password);
+            const reviewInterface={
+                id:size,
+                text:review,
+                created:new Date(),
+                updated:new Date(),
+                user:user
+            };
+            manga.reviews.push(reviewInterface);
+            fileService.Write(database);
+            res.render('detalhar.ejs',{user:req.session.user,manga:manga})
+        }
     }
 }
 module.exports=mangaController;

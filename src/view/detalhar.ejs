@@ -10,13 +10,13 @@
         <div class="reviews">
             <h2 align="center">Reviews</h2>
             <% if(user){%> 
-                <form method="post" action="/addreview">
+                <form method="post" action="/manga/review">
                     <div class="review-card">
                         <div class='user-img' style="background-image: url(<%=user.image%>)"></div>
                         <div class="review-texts">
-                            <input type="text" placeholder="escreva uma review!" class="review-form-input">
-                            <input type="hidden" name="manga" value="<%=manga.id%>">
-                            <input type="hidden" name="user" value="<%=user.id%>">
+                            <input type="text" name='review' placeholder="escreva uma review!" class="review-form-input">
+                            <input type="hidden" name="mangaid" value="<%=manga.id%>">
+                            <input type="hidden" name="userid" value="<%=user.id%>">
                             <input type="submit" class="review-form-submit" value="->">
                         </div>
                     </div>

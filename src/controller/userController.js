@@ -2,7 +2,7 @@ const fileService=require('../utils/fileService');
 const { hashSync,compareSync,genSaltSync } = require('bcrypt');
 class UserController{
     static cadastrar(req,res){
-        const {email,password,image}=req.body;
+        const {email,password,image,name}=req.body;
         const database=fileService.Read();
         let lastid=database.users.length+1;
         const salt=genSaltSync(10);
@@ -10,6 +10,7 @@ class UserController{
         const user={
             id:lastid,
             role:"user",
+            name:name,
             email:email,
             password:hashPassword,
             image:image,
@@ -25,7 +26,7 @@ class UserController{
         const {email,password}=req.body;
         const users=database.users;
         const user=users.find(user=>user.email==email)
-        if(user){
+        if(user&&password){
             const passed=compareSync(password,user.password);
             if(passed){
                 delete(user.password);
@@ -40,7 +41,8 @@ class UserController{
     }
     static logoff(req,res){
         if(req.session.user){
-            delete(req.session.user);
+            req.session.user=null;
+            req.session.destroy();
             console.log("DESLOGADO")
         }
         res.redirect('/');
