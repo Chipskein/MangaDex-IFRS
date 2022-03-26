@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "dev": "nodemon --ignore '*.json' src/index.js",
-    "reset":"node src/backup_script.js"
+    "reset":"node -e \"require('./src/utils/fileService').Reset();\""
   },
   "repository": {
     "type": "git",
