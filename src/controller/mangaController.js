@@ -2,7 +2,7 @@ const fileService=require('../utils/fileService');
 class mangaController{
     static listar(req,res){
         const database=fileService.Read();
-        return res.render('listar.ejs',{mangas:database.mangas});
+        return res.render('listar.ejs',{user:req.session.user,mangas:database.mangas});
     }
     static mostrar_cadastrar(req,res){
         return res.render('cadastrar.ejs');
@@ -33,7 +33,7 @@ class mangaController{
                 mangas_filter.push(manga);
             }
         })
-        return res.render('listar.ejs',{mangas:mangas_filter});
+        return res.render('listar.ejs',{user:req.session.user,mangas:mangas_filter});
     }
     static detalhar(req,res){
         const { id }=req.params;
@@ -44,7 +44,7 @@ class mangaController{
                 manga=data;
             }
         })
-        if(manga!=false) return res.render('detalhar.ejs',{manga:manga});
+        if(manga!=false) return res.render('detalhar.ejs',{user:req.session.user,manga:manga});
         else return res.redirect('/manga');
     }
     static deletar(req,res){

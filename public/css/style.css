@@ -171,3 +171,19 @@ article{
     background-color: red;
     border: 2px solid white;
 }
+.div-navbar-double-button{
+    display: flex;
+}
+.div-navbar-double-button>a{
+    margin-left: 10px;
+}
+.user-img{
+    width: 60px;
+    height: 60px;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+	background-position: center;
+	border-radius: 50%;
+    border: 1px solid var(--primary-color);
+}

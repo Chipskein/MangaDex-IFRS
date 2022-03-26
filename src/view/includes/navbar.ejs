@@ -9,10 +9,41 @@
                 <input type="submit" value="->" class="search">
             </form>
         </div>
-        <a href="/manga/cadastrar">
+    <div class="div-navbar-double-button">
+    <% if(user){ %>
+
+        <% if(user.role=='admin'){ %>
+            <a href="/manga/gerenciar">
+                <div class="navbar-button">
+                    Gerenciar Manga
+                </div>
+            </a>
+            <a href="/users/gerenciar">
+                <div class="navbar-button">
+                    Gerenciar Users
+                </div>
+            </a>
+        <%}%>
+        <a href="/users/logoff">
             <div class="navbar-button">
-                Cadastrar Manga
+                Sair
             </div>
         </a>
+        <a href="/users/me">
+            <div class='user-img' style="background-image: url(<%=user.image%>)">
+            </div>
+        </a>
+    <%} else{%>
+            <a href="/login.html">
+                <div class="navbar-button">
+                    Logar-se
+                </div>
+            </a>
+            <a href="/register.html">
+                <div class="navbar-button">
+                    Cadastrar-se
+                </div>
+            </a> 
+    <%}%> 
     </div>
 </nav>

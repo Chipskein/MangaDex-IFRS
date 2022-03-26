@@ -4,10 +4,10 @@ const userController=require('../controller/userController.js');
 
 
 //user
+router.get('/logoff',userController.logoff);
 //cadastrar
 router.post('/cadastrar',userController.cadastrar);
 router.post('/login',userController.login);
-
 //detalhes
 //router.get('/:id',userController.detalhar);//qualquer um
 

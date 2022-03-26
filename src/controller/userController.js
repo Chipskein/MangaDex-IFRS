@@ -32,5 +32,12 @@ class UserController{
             res.redirect('/');
         }
     }
+    static logoff(req,res){
+        if(req.session.user){
+            delete(req.session.user);
+            console.log("DESLOGADO")
+        }
+        res.redirect('/');
+    }
 }
 module.exports=UserController;
