@@ -34,7 +34,6 @@ app.use('*', (req, res, next) => {
 
 app.use('/users',userRoutes);
 app.use('/manga',mangaRoutes);
-
 app.get('/',(req,res)=>res.redirect('/manga'));
 app.use('*', (req, res) => res.redirect('/NotFound.html'));
 

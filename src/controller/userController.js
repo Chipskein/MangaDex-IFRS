@@ -48,5 +48,11 @@ class UserController{
         }
         res.redirect('/');
     }
+    static getUserPerfilSelf(req,res){
+        res.status(200).json(req.session);
+    }
+    static getUserPerfil(req,res){
+        res.status(200).json(req.params);
+    }
 }
 module.exports=UserController;
