@@ -28,9 +28,11 @@ class UserController{
         if(user&&password){
             const passed=compareSync(password,user.password);
             if(passed){
-                delete(user.password);
                 req.session.user=user;
                 res.redirect('/');
+            }
+            else{
+                console.log("SENHA INVÀLIDA");
             }
         }
         else{

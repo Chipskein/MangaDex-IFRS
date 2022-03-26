@@ -64,7 +64,6 @@ class mangaController{
         const user=database.users.find(user=>user.id==userid);
         const size=manga.reviews.length+1;
         if(user&&manga){
-            delete(user.password);
             const reviewInterface={
                 id:size,
                 text:review,
