@@ -25,11 +25,17 @@ class UserController{
         const {email,password}=req.body;
         const users=database.users;
         const user=users.find(user=>user.email==email)
-        const passed=compareSync(password,user.password);
-        if(passed){
-            delete(user.password);
-            req.session.user=user;
-            res.redirect('/');
+        if(user){
+            const passed=compareSync(password,user.password);
+            if(passed){
+                delete(user.password);
+                req.session.user=user;
+                res.redirect('/');
+            }
+        }
+        else{
+            console.log('user nao encontrado')
+            res.redirect('/login.html');
         }
     }
     static logoff(req,res){

@@ -6,23 +6,32 @@
         <%- include('includes/navbar.ejs',{user:user})%>
     </header>
     <article class="main">
-        <div class="manga-card">
-            <img src="<%=manga.image%>" alt="Imagem" class="manga-image">
-            <div class="manga-card-div">
-                <a class="manga-name" href="/manga/<%=manga.id%>"><%=manga.name%></a>
-                <p>
-                    <%=manga.sinopse%>
-                </p>
-                <p>
-                    Criado em <%=manga.created_at%>
-                    <br>
-                    Atualizado em <%=manga.updated_at%>
-                </p>
-                <div class="manga-card-delete-button">
-                    <a href="/manga/delete/<%=manga.id%>">Deletar</a>
-                </div>
-            </div>
-        </div>    
+        <%- include('includes/manga-detalhes.ejs',{user:user,manga:manga})%>
+        <div class="reviews">
+            <h2 align="center">Reviews</h2>
+            <% if(user){%> 
+                <form method="post" action="/addreview">
+                    <div class="review-card">
+                        <div class='user-img' style="background-image: url(<%=user.image%>)"></div>
+                        <div class="review-texts">
+                            <input type="text" placeholder="escreva uma review!" class="review-form-input">
+                            <input type="hidden" name="manga" value="<%=manga.id%>">
+                            <input type="hidden" name="user" value="<%=user.id%>">
+                            <input type="submit" class="review-form-submit" value="->">
+                        </div>
+                    </div>
+                </form>
+            <% } %> 
+        
+            <% if(manga.reviews.length>0){ %> 
+                <% manga.reviews.forEach(review=>{ %>
+                    <%- include('includes/review-card.ejs',{user:user,review:review})%> 
+                <%})%>
+            <%} else{%>
+                <h2 align="center">Sem Reviews</h2>
+            <%}%>
+
+        </div>
     </article>
 </body>
 </html>

@@ -24,6 +24,13 @@
                 </div>
             </a>
         <%}%>
+        <% if(user.role=='admin'||user.role=='admin'){ %>
+            <a href="/reviews/gerenciar">
+                <div class="navbar-button">
+                    Gerenciar Reviews
+                </div>
+            </a>
+        <%}%>
         <a href="/users/logoff">
             <div class="navbar-button">
                 Sair
