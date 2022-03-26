@@ -11,6 +11,11 @@ router.post('/cadastrar',auth.isLogged,auth.isAdmin,mangaController.cadastrar);
 //remover
 router.get('/delete/:id',auth.isLogged,auth.isAdmin,mangaController.deletar);
 
+//gerencias mangas
+router.get('/gerenciar',auth.isLogged,auth.isAdmin,mangaController.gerenciar_mangas);
+
+
+
 //NORMAL
 //list
 router.get('/',mangaController.listar);

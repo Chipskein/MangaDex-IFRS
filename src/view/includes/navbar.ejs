@@ -5,7 +5,7 @@
         </a>
         <div>
             <form action="/manga" method="POST">
-                <input type="text" placeholder="Pesquisar" name="searchText" class="search-input search">
+                <input type="text" placeholder="Search manga name" name="searchText" class="search-input search">
                 <input type="submit" value="->" class="search">
             </form>
         </div>
@@ -15,25 +15,25 @@
         <% if(user.role=='admin'){ %>
             <a href="/manga/gerenciar">
                 <div class="navbar-button">
-                    Gerenciar Manga
+                    Manager Manga
                 </div>
             </a>
             <a href="/users/gerenciar">
                 <div class="navbar-button">
-                    Gerenciar Users
+                    Manager Users
                 </div>
             </a>
         <%}%>
         <% if(user.role=='admin'||user.role=='admin'){ %>
             <a href="/reviews/gerenciar">
                 <div class="navbar-button">
-                    Gerenciar Reviews
+                    Manager Reviews
                 </div>
             </a>
         <%}%>
         <a href="/users/logoff">
             <div class="navbar-button">
-                Sair
+                Logoff
             </div>
         </a>
         <a href="/users/me">
@@ -43,12 +43,12 @@
     <%} else{%>
             <a href="/login.html">
                 <div class="navbar-button">
-                    Logar-se
+                    Login
                 </div>
             </a>
             <a href="/register.html">
                 <div class="navbar-button">
-                    Cadastrar-se
+                    Register
                 </div>
             </a> 
     <%}%> 

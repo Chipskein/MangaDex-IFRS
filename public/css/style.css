@@ -156,8 +156,9 @@ article{
     margin-top: 7%;
 }
 .manga-form-input{
-    width: 400px;
-    border-radius: 20px;
+    width: 350px;
+    height: 30px;
+    border-radius: 15px;
     border: var(--primary-color) 2px solid;
     color: var(--primary-color);
     font-weight: bolder;
@@ -165,7 +166,8 @@ article{
 }
 
 .manga-form-submit{
-    width: 150px;
+    width: 100px;
+    height: 30px;
     border-radius: 80px;
     background-color: white;
     color: var(--primary-color);

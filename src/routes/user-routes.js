@@ -15,11 +15,11 @@ router.get('/:id',auth.isLogged,userController.getUserPerfil);
 
 //admin
 //list
-//router.get('/',userController.listar);//admin
+//router.get('/',auth.isLogged,auth.isAdmin,userController.listar);//admin
 //pesquisar
-//router.post('/',userController.pesquisar);
+//router.post('/',auth.isLogged,auth.isAdmin,userController.pesquisar);
 //remover
-//router.get('/delete/:id',userController.deletar);
+//router.get('/delete/:id',auth.isLogged,auth.isAdmin,userController.deletar);
 
 
 module.exports=router;

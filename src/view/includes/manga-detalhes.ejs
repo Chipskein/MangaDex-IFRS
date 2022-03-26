@@ -10,6 +10,11 @@
             <p>Last Update:<%=new Date(manga.updated).toDateString()%></p>
             <p>Authors:lorem</p>
             <p>Reviews:<%=manga.reviews.length%> </p>
+            <%if(user&&user.role=='admin'){%>
+                <a href="/manga/delete/<%=manga.id%>" class="manga-card-delete-button">
+                    Delete
+                </a>
+            <% } %> 
         </div>
     </div>
 </div>

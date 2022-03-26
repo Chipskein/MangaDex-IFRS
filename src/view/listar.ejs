@@ -6,9 +6,15 @@
         <%- include('includes/navbar.ejs',{user:user})%>
     </header>
     <article class="main">
+        <% if(!gerenciar){ %> 
             <% mangas.forEach(manga=>{ %>
                 <%- include('includes/manga-card.ejs',{user:user,manga:manga})%> 
             <%})%>
+        <%} else{%>
+            <% mangas.forEach(manga=>{ %>
+                <%- include('includes/manga-detalhes.ejs',{user:user,manga:manga})%> 
+            <%})%>
+        <% } %> 
     </article>
 </body>
 </html>

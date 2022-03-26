@@ -2,7 +2,7 @@ const fileService=require('../utils/fileService');
 class mangaController{
     static listar(req,res){
         const database=fileService.Read();
-        return res.render('listar.ejs',{user:req.session.user,mangas:database.mangas});
+        return res.render('listar.ejs',{gerenciar:false,user:req.session.user,mangas:database.mangas});
     }
     static mostrar_cadastrar(req,res){
         return res.render('cadastrar.ejs');
@@ -73,8 +73,14 @@ class mangaController{
             };
             manga.reviews.push(reviewInterface);
             fileService.Write(database);
-            res.render('detalhar.ejs',{user:req.session.user,manga:manga})
+            res.redirect(`/manga/${manga.id}`);
         }
+    }
+    static gerenciar_mangas(req,res){
+        const database=fileService.Read();
+        const mangas=database.mangas;
+        const user=req.session.user
+        res.render('listar.ejs',{gerenciar:true,user:req.session.user,mangas})
     }
 }
 module.exports=mangaController;
