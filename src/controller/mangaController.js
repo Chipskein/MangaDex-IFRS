@@ -35,7 +35,7 @@ class mangaController{
                 mangas_filter.push(manga);
             }
         })
-        return res.render('listar.ejs',{user:req.session.user,mangas:mangas_filter});
+        return res.render('listar.ejs',{gerenciar:false,user:req.session.user,mangas:mangas_filter});
     }
     static detalhar(req,res){
         const { id }=req.params;
