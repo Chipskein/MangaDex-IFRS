@@ -2,10 +2,11 @@ const fileService=require('../utils/fileService');
 const { hashSync,compareSync} = require('bcrypt');
 class UserController{
     static cadastrar(req,res){
-        const {email,password,image,name}=req.body;
+        let {email,password,image,name}=req.body;
         const database=fileService.Read();
         let lastid=database.users.length+1;
         const hashPassword=hashSync(password,10);
+        if(!image) image='/imgs/woman.png';
         const user={
             id:lastid,
             role:"user",
