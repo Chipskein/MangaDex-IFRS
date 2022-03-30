@@ -2,10 +2,13 @@ const fileService=require('../utils/fileService');
 class mangaController{
     static listar(req,res){
         const database=fileService.Read();
-        return res.render('listar.ejs',{gerenciar:false,user:req.session.user,mangas:database.mangas});
+        let mangas=database.mangas;
+        const filters={...req.query}
+        //if(filters.reviews_checkbox) console.log(mangas.find(manga=>(manga.reviews.length<=filters.reviews2)));
+        res.render('listar.ejs',{gerenciar:false,user:req.session.user,mangas:mangas});
     }
     static mostrar_cadastrar(req,res){
-        return res.render('cadastrar.ejs');
+        return res.render('cadastrar-manga.ejs');
     }
     static cadastrar(req,res){
         const {manganame,mangaimage,sinopse}=req.body;

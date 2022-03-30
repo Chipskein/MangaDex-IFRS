@@ -65,6 +65,15 @@ article{
     width: 95%;
     align-items: center;
 }
+.filter-submit{
+    background-color: white;
+    color:var(--primary-color);
+    border: 1px var(--primary-color) solid;
+    font-weight: bolder;
+    text-align: center;
+    width: 160px;
+    height: 50px;
+}
 .navbar-button{
     display: flex;
     justify-content: center;
@@ -238,7 +247,22 @@ article{
 .created-at{
     color: gray;
 }
-
+.filter-input{
+    width: 160px;
+    border-radius: 20px;
+    border: var(--primary-color) 2px solid;
+    color: var(--primary-color);
+    font-weight: bolder;
+    text-align: center;
+}
+.filter-input2{
+    width: 60px;
+    border-radius: 20px;
+    border: var(--primary-color) 2px solid;
+    color: var(--primary-color);
+    font-weight: bolder;
+    text-align: center;
+}
 .review-card-form-container{
     margin: 2%;
     display: flex;
