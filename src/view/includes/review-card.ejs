@@ -5,10 +5,16 @@
         </a>
 
         <div class="review-texts">
-            <a href="/users/<%=review.user.id%>"><%=review.user.name%>:</a>
-            <p>
-                <%=review.text%>
-            </p>
+            <div class="review-texts-card">
+                <a href="/users/<%=review.user.id%>">
+                    <h3>
+                        <%=review.user.name%>
+                    </h3>
+                    <h6 class="created-at">Created at <%=new Date(review.created).toString().substring(4,24)%></h6>
+                </a>
+            </div>
+            <%=review.text%>
         </div>
     </div>
+    <br>
 </div>

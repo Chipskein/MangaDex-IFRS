@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-<%- include('includes/head.ejs',{title:"Mangadex| Detalhar"})%>
+<%- include('includes/head.ejs',{title:"Mangadex | Detalhar"})%>
 <body>
     <header>
         <%- include('includes/navbar.ejs',{user:user})%>
@@ -10,17 +10,20 @@
         <div class="reviews">
             <h2 align="center">Reviews</h2>
             <% if(user){%> 
-                <form method="post" action="/manga/review">
-                    <div class="review-card">
-                        <div class='user-img' style="background-image: url(<%=user.image%>)"></div>
-                        <div class="review-texts">
-                            <input type="text" name='review' placeholder="escreva uma review!" class="review-form-input">
-                            <input type="hidden" name="mangaid" value="<%=manga.id%>">
-                            <input type="hidden" name="userid" value="<%=user.id%>">
-                            <input type="submit" class="review-form-submit" value="->">
+                <div class="form-container">
+                    <form method="post" action="/manga/review">
+                        <div class="review-card-form-container">
+                            <div class='user-img' style="background-image: url(<%=user.image%>)"></div>
+                            <div class="review-texts-div-input">
+                                <input type="text" name='review' placeholder="escreva uma review!" class="review-form-input">
+                                <input type="hidden" name="mangaid" value="<%=manga.id%>">
+                                <input type="hidden" name="userid" value="<%=user.id%>">
+                                <input type="submit" class="review-form-submit" value="->">
+                            </div>
                         </div>
-                    </div>
-                </form>
+                    </form>
+                </div>
+
             <% } %> 
         
             <% if(manga.reviews.length>0){ %> 

@@ -46,6 +46,7 @@ class mangaController{
                 manga=data;
             }
         })
+        console.log(manga.reviews);
         if(manga!=false) return res.render('detalhar.ejs',{user:req.session.user,manga:manga});
         else return res.redirect('/manga');
     }

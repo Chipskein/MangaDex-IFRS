@@ -1,11 +1,12 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-<%- include('includes/head.ejs',{title:"Mangadex| Home"})%>
+<%- include('includes/head.ejs',{title:"Mangadex | Home"})%>
 <body>
     <header>
         <%- include('includes/navbar.ejs',{user:user})%>
     </header>
     <article class="main">
+
         <% if(!gerenciar){ %> 
             <% mangas.forEach(manga=>{ %>
                 <%- include('includes/manga-card.ejs',{user:user,manga:manga})%> 
@@ -15,6 +16,7 @@
                 <%- include('includes/manga-detalhes.ejs',{user:user,manga:manga})%> 
             <%})%>
         <% } %> 
+
     </article>
 </body>
 </html>
