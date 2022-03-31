@@ -3,8 +3,9 @@ class mangaController{
     static listar(req,res){
         const database=fileService.Read();
         let mangas=database.mangas;
-        const filters={...req.query}
-        //if(filters.reviews_checkbox) console.log(mangas.find(manga=>(manga.reviews.length<=filters.reviews2)));
+        const filters={...req.query};
+        if(filters.data_checkbox=='on') mangas=mangas.filter(manga=>new Date(manga.updated)<=new Date(filters.data2)&&new Date(manga.updated)>=new Date(filters.data1));
+        if(filters.reviews_checkbox=='on') mangas=mangas.filter(manga=>manga.reviews.length<=filters.reviews2&&manga.reviews.length>=filters.reviews1);
         res.render('listar.ejs',{gerenciar:false,user:req.session.user,mangas:mangas});
     }
     static mostrar_cadastrar(req,res){
