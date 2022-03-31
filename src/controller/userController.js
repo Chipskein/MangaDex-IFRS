@@ -60,11 +60,19 @@ class UserController{
         const database=fileService.Read();
         const users=database.users;
         const userSelf=req.session.user;
-        console.log(userSelf);
         res.render('gerenciar-users.ejs',{users:users,user:userSelf});
     }
     static deletar(req,res){
-        res.status(200).json('teste');
+        const { id } = req.params;
+        const user=req.session.user;
+        const database=fileService.Read();
+        const userIdx = database.users.findIndex(f => f.id == id);
+        database.users.splice(userIdx, 1);
+        fileService.Write(database);
+        if(user.id==id){
+            return res.redirect('/users/logoff');
+        }
+        return res.redirect('/users/gerenciar');
     }
 }
 module.exports=UserController;

@@ -3,12 +3,7 @@ module.exports={
     isLogged:async (req,res,next)=>{
         try{    
             const session=req.session;
-            if(session.user!=null){
-                const database=fileService.Read();
-                const findUser=database.users.find(user=>session.user.id==user.id);
-                if(findUser) next()
-                else throw Error('500 | Usuario Inesxistente');
-            }
+            if(session.user!=null) next();
             else throw Error('401 | Você não está logado')
         }
         catch(err){    
