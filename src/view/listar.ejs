@@ -6,28 +6,39 @@
         <%- include('includes/navbar.ejs',{user:user})%>
     </header>
     <article class="main">
-        <div align="center">
-            <h1>Filtros</h1>
-            <form>
-                <label>
-                    <input type="checkbox" name="data_checkbox" id="filter-data-checkbox"> Por Data:
-                </label>
-                <br>
-                <label>
-                    <input type="checkbox" name="reviews_checkbox" id="filter-reviews-checkbox"> Por Qt de Reviews
-                </label>
-                <br>
-                <label id="filter-label-inputs-date" style="display: none;">
-                    Entre <input type="date" name="data1" class="filter-input"> e <input class="filter-input" name="data2" type="date">
-                </label>
-                <br>
-                <label id="filter-label-inputs-review" style="display: none;">
-                    Min:<input type="number" name="reviews1" class="filter-input2" min="0"> Max:<input name="reviews2" class="filter-input2" type="number" min="1">
-                </label>
-                <br>
-                <input type="submit" style="display:none;" value="Filtrar" class="filter-submit" id="filter-submit">
-            </form>
+        <%if(!gerenciar){%>
+            <div align="center">
+                <h1>Filtros</h1>
+                <form>
+                    <label>
+                        <input type="checkbox" name="data_checkbox" id="filter-data-checkbox"> Por Data:
+                    </label>
+                    <br>
+                    <label>
+                        <input type="checkbox" name="reviews_checkbox" id="filter-reviews-checkbox"> Por Qt de Reviews
+                    </label>
+                    <br>
+                    <label id="filter-label-inputs-date" style="display: none;">
+                        Entre <input type="date" name="data1" class="filter-input"> e <input class="filter-input" name="data2" type="date">
+                    </label>
+                    <br>
+                    <label id="filter-label-inputs-review" style="display: none;">
+                        Min:<input type="number" name="reviews1" class="filter-input2" min="0"> Max:<input name="reviews2" class="filter-input2" type="number" min="1">
+                    </label>
+                    <br>
+                    <input type="submit" style="display:none;" value="Filtrar" class="filter-submit" id="filter-submit">
+                </form>
             </div>
+        <%} else{%>
+            <br>
+            <div align="center">
+                <a href="/manga/cadastrar">
+                    <div class="navbar-button">
+                        Adicionar Manga
+                    </div>
+                </a>
+            </div>
+         <%}%> 
         <% if(mangas&&mangas.length>0){ %>
             <% if(!gerenciar){ %>
                     <% mangas.forEach(manga=>{ %>
