@@ -9,9 +9,9 @@ router.get('/logoff',auth.isLogged,userController.logoff);
 router.post('/cadastrar',userController.cadastrar);
 router.post('/login',userController.login);
 //detalhes
+router.get('/gerenciar'/*,auth.isLogged,auth.isAdmin*/,userController.getUsersManager)
 router.get('/me',auth.isLogged,userController.getUserPerfilSelf)
 router.get('/:id',auth.isLogged,userController.getUserPerfil);
-
 
 //admin
 //list

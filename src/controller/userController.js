@@ -49,11 +49,17 @@ class UserController{
         }
         res.redirect('/');
     }
-    static getUserPerfilSelf(req,res){
-        res.status(200).json(req.session);
+    static getUserPerfilSelf(req,res){  
+        console.log(req.session.user);
+        res.render('perfil.ejs',{user:req.session.user});
     }
     static getUserPerfil(req,res){
         res.status(200).json(req.params);
+    }
+    static getUsersManager(req,res){
+        const database=fileService.Read();
+        const users=database.users;
+        res.status(200).json(users);
     }
 }
 module.exports=UserController;
