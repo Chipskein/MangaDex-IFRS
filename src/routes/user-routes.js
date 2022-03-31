@@ -4,7 +4,7 @@ const userController=require('../controller/userController.js');
 const auth = require("../utils/auth.js");
 
 //user
-router.get('/logoff',auth.isLogged,userController.logoff);
+router.get('/logoff',auth.isLogged,auth.disableCache,userController.logoff);
 //cadastrar
 router.post('/cadastrar',userController.cadastrar);
 router.post('/login',userController.login);
