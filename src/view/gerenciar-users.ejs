@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<%- include('includes/head.ejs',{title:"Mangadex | Me"})%>
+<body>
+    <header>
+        <%- include('includes/navbar.ejs',{user:user})%>
+    </header>
+    <article class="main">
+        <% users.forEach(user=>{ %>
+            <%- include('includes/user-detalhar-card.ejs',{user:user})%> 
+        <%})%>
+    </article>
+</body>
+</html>

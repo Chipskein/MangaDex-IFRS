@@ -59,7 +59,12 @@ class UserController{
     static getUsersManager(req,res){
         const database=fileService.Read();
         const users=database.users;
-        res.status(200).json(users);
+        const userSelf=req.session.user;
+        console.log(userSelf);
+        res.render('gerenciar-users.ejs',{users:users,user:userSelf});
+    }
+    static deletar(req,res){
+        res.status(200).json('teste');
     }
 }
 module.exports=UserController;

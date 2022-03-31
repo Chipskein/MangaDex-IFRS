@@ -1,0 +1,19 @@
+<div>
+    <br>
+    <div class="manga-detalhes">
+        <img src="<%=user.image%>" alt="Imagem" class="manga-detalhes-image">
+        <div class="manga-detalhes-info">
+            <h1 align="center" class="manga-name"><%=user.name%></h1>
+            <p>Id:<%=user.id%></p>
+            <p>Role:<%=user.role%></p>
+            <p>Email:<%=user.email%></p>
+            <p>Image(link):<%=user.image%></p>
+            <p>Created at:<%=new Date(user.created).toDateString()%></p>
+            <p>Update at:<%=new Date(user.updated).toDateString()%></p>
+            <a href="/users/delete/<%=user.id%>" class="manga-card-delete-button">
+                Delete
+            </a>
+        </div>
+    </div>
+    <br>
+</div>
