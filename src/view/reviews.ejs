@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<%- include('includes/head.ejs',{title:"Mangadex | Reviews"})%>
+<body>
+    <header>
+        <%- include('includes/navbar.ejs',{user:user})%>
+    </header>
+    <article class="main">
+        <br>
+        <% if(reviews.length>0){ %> 
+            <%reviews.forEach(review=>{ %>
+                <%- include('includes/review-card.ejs',{manager:true,user:user,review:review})%> 
+            <%})%>
+        <%} else{%>
+            <h2 align="center">Sem Reviews</h2>
+        <%}%>
+    </article>
+</body>
+</html>

@@ -11,7 +11,7 @@
             <h2 align="center">Reviews</h2>
             <% if(user){%> 
                 <div class="form-container">
-                    <form method="post" action="/manga/review">
+                    <form method="post" action="/review">
                         <div class="review-card-form-container">
                             <div class='user-img' style="background-image: url(<%=user.image%>)"></div>
                             <div class="review-texts-div-input">
@@ -28,7 +28,7 @@
         
             <% if(manga.reviews.length>0){ %> 
                 <% manga.reviews.forEach(review=>{ %>
-                    <%- include('includes/review-card.ejs',{user:user,review:review})%> 
+                    <%- include('includes/review-card.ejs',{manager:false,user:user,review:review})%> 
                 <%})%>
             <%} else{%>
                 <h2 align="center">Sem Reviews</h2>

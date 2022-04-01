@@ -1,9 +1,11 @@
 <div>
+    <% if(manager){ %> 
+        <h2 style="margin: 2%;">Review Feita no manga <a href="/manga/<%=review.manga%>"><i><%=review.manganame%></i></a></h2>
+    <%}%>
     <div class="review-card">
         <a href="/users/<%=review.user.id%>">
             <div class='user-img' style="background-image: url(<%=review.user.image%>)"></div>
         </a>
-
         <div class="review-texts">
             <div class="review-texts-card">
                 <a href="/users/<%=review.user.id%>">

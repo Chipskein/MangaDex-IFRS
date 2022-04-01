@@ -24,13 +24,11 @@
                 </div>
             </a>
         <%}%>
-        <% if(user.role=='admin'||user.role=='admin'){ %>
-            <a href="/reviews/gerenciar">
-                <div class="navbar-button">
-                    Manager Reviews
-                </div>
-            </a>
-        <%}%>
+        <a href="/review/<%=user.id%>">
+            <div class="navbar-button">
+                Manager Reviews
+            </div>
+        </a>
         <a href="/users/logoff">
             <div class="navbar-button">
                 Logoff

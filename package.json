@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "dev": "nodemon --ignore '*.json' src/index.js",
-    "reset":"node -e \"require('./src/utils/fileService').Reset();\""
+    "reset":"node -e \"require('./src/utils/fileService').Reset();\"",
+    "test":"node -e \"const {customAlphabet }=require('nanoid'); const nanoid=customAlphabet('1234567890',8);console.log(nanoid());\""
   },
   "repository": {
     "type": "git",

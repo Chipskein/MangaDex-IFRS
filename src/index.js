@@ -16,6 +16,7 @@ app.use(session({
 //routes
 const mangaRoutes=require("./routes/manga-routes.js");
 const userRoutes=require("./routes/user-routes.js");
+const reviewsRoutes=require("./routes/reviews-routes.js");
 
 //set view engine
 app.set('view engine','ejs');
@@ -34,6 +35,7 @@ app.use('*', (req, res, next) => {
 
 app.use('/users',userRoutes);
 app.use('/manga',mangaRoutes);
+app.use('/review',reviewsRoutes);
 app.get('/',(req,res)=>res.redirect('/manga'));
 app.use('*', (req, res) => res.redirect('/NotFound.html'));
 

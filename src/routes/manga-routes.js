@@ -26,8 +26,4 @@ router.get('/:id',mangaController.detalhar);
 //pesquisar
 router.post('/',mangaController.pesquisar);
 
-//add Review
-router.post('/review',auth.isLogged,mangaController.add_review);
-
-
 module.exports=router;
