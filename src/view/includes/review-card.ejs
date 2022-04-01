@@ -17,6 +17,15 @@
             </div>
             <%=review.text%>
         </div>
+        <%if(manager){%>
+            <a href="/review/delete/<%=review.id%>" class="manga-card-delete-button">
+                Delete
+            </a>
+            <a href="/review/edit/<%=review.id%>" class="manga-card-edit-button">
+                Edit
+            </a>
+        <% } %>
     </div>
+   
     <br>
 </div>
