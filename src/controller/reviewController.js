@@ -1,4 +1,6 @@
 const fileService=require('../utils/fileService');
+const {customAlphabet }=require('nanoid');
+const nanoid=customAlphabet('1234567890',8);
 class reviewController{
     static async listFromUser(req,res){
         const {id} =req.params;
@@ -20,10 +22,9 @@ class reviewController{
         const database=fileService.Read();
         const manga=database.mangas.find(manga=> manga.id==mangaid);
         const user=database.users.find(user=>user.id==userid);
-        const size=manga.reviews.length+1;
         if(user&&manga){
             const reviewInterface={
-                id:size,
+                id:nanoid(),
                 text:review,
                 created:new Date(),
                 updated:new Date(),

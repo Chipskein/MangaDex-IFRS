@@ -1,4 +1,6 @@
 const fileService=require('../utils/fileService');
+const {customAlphabet }=require('nanoid');
+const nanoid=customAlphabet('1234567890',8);
 class mangaController{
     static async listar(req,res){
         const database=fileService.Read();
@@ -14,9 +16,8 @@ class mangaController{
     static async cadastrar(req,res){
         const {manganame,mangaimage,sinopse}=req.body;
         const database=fileService.Read();
-        const id=database.mangas.length+1;
         const manga={
-            id:id,
+            id:nanoid(),
             name:manganame,
             image:mangaimage,
             sinopse:sinopse,
@@ -78,25 +79,6 @@ class mangaController{
         const database=fileService.Read();
         const manga = database.mangas.filter(f => f.id == id)[0];
         res.render('manga_mostrar_editar.ejs',{manga:manga,user:req.session.user});
-    }
-    static async add_review(req,res){
-        const {mangaid,userid,review}=req.body
-        const database=fileService.Read();
-        const manga=database.mangas.find(manga=> manga.id==mangaid);
-        const user=database.users.find(user=>user.id==userid);
-        const size=manga.reviews.length+1;
-        if(user&&manga){
-            const reviewInterface={
-                id:size,
-                text:review,
-                created:new Date(),
-                updated:new Date(),
-                user:user
-            };
-            manga.reviews.push(reviewInterface);
-            fileService.Write(database);
-            res.redirect(`/manga/${manga.id}`);
-        }
     }
     static async gerenciar_mangas(req,res){
         const database=fileService.Read();
