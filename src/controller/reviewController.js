@@ -36,7 +36,12 @@ class reviewController{
         }
     }
     static async editar(req,res){
-        res.status(200).json("editar");
+        const {mangaid,id}=req.params;
+        const database=fileService.Read();
+        const manga=database.mangas.filter(m=>m.id==mangaid)[0];
+        const review = manga.reviews.filter(f => f.id == id)[0];
+
+        res.render('review-editar.ejs',{user:req.session.user,manga:manga,review:review})
     }
     static async deletar(req,res){
         const {mangaid,id}=req.params;
