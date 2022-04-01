@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<%- include('includes/head.ejs',{title:"Mangadex | Editar"})%>
+<body>
+    <div class="manga-form-container">
+        <form class="manga-form" action="/manga/edit/<%=manga.id%>" method="post" >
+            <div>
+                <div>
+                    <img class=logo src="/imgs/icon.png" alt="">
+                    <h1 class="title">MangaDex</h1>
+                </div>
+            </div>
+            <label for="manganame">
+                Nome do Manga:<br><input placeholder="Nome do Manga"class="manga-form-input" type="text" name="manganame" value="<%=manga.name%>" required>
+            </label>
+            <label for="mangaimage">
+                Imagem(link):<br><input placeholder="Link da Imagem" class="manga-form-input" type="text" name="mangaimage" value="<%=manga.image%>" required>
+            </label>
+            <label for="sinopse">
+                Sinopse:<br>
+                <textarea name="sinopse" class="manga-form-textarea" cols="30" rows="6" placeholder="Sinopse">
+                    <%=manga.sinopse%>
+                </textarea>
+            </label>
+            <div>
+                <input type="submit" value="Editar" class="manga-form-submit">
+            </div>
+        </form>
+    </div>
+</body>
+</html>

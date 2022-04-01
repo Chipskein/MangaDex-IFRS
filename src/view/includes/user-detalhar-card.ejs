@@ -10,9 +10,16 @@
             <p>Image(link):<%=user.image%></p>
             <p>Created at:<%=new Date(user.created).toDateString()%></p>
             <p>Update at:<%=new Date(user.updated).toDateString()%></p>
-            <a href="/users/delete/<%=user.id%>" class="manga-card-delete-button">
-                Delete
-            </a>
+            <div style="display: flex; flex-direction: row;">
+                <a href="/users/delete/<%=user.id%>" class="manga-card-delete-button">
+                    Delete
+                </a>
+                <% if(edit){ %>
+                    <a href="/user/edit/<%=user.id%>" class="manga-card-edit-button">
+                        Edit
+                    </a>
+                <%}%>
+            </div>
         </div>
     </div>
     <br>

@@ -1,6 +1,6 @@
 const fileService=require('../utils/fileService');
 class mangaController{
-    static listar(req,res){
+    static async listar(req,res){
         const database=fileService.Read();
         let mangas=database.mangas;
         const filters={...req.query};
@@ -8,10 +8,10 @@ class mangaController{
         if(filters.reviews_checkbox=='on') mangas=mangas.filter(manga=>manga.reviews.length<=filters.reviews2&&manga.reviews.length>=filters.reviews1);
         res.render('listar.ejs',{gerenciar:false,user:req.session.user,mangas:mangas});
     }
-    static mostrar_cadastrar(req,res){
+    static async mostrar_cadastrar(req,res){
         return res.render('cadastrar-manga.ejs');
     }
-    static cadastrar(req,res){
+    static async cadastrar(req,res){
         const {manganame,mangaimage,sinopse}=req.body;
         const database=fileService.Read();
         const id=database.mangas.length+1;
@@ -29,7 +29,7 @@ class mangaController{
         fileService.Write(database);
         return res.redirect('/manga');
     }
-    static pesquisar(req,res){
+    static async pesquisar(req,res){
         let mangas_filter=[];
         let { searchText }=req.body;
         const database=fileService.Read();
@@ -41,20 +41,20 @@ class mangaController{
         })
         return res.render('listar.ejs',{gerenciar:false,user:req.session.user,mangas:mangas_filter});
     }
-    static detalhar(req,res){
+    static async detalhar(req,res){
         const { id }=req.params;
         let manga=false;
         const database=fileService.Read();
         database.mangas.forEach(data=>{
             if (data.id==id){
+                data.reviews.reverse();
                 manga=data;
             }
         })
-        console.log(manga.reviews);
         if(manga!=false) return res.render('detalhar.ejs',{user:req.session.user,manga:manga});
         else return res.redirect('/manga');
     }
-    static deletar(req,res){
+    static async deletar(req,res){
         const { id } = req.params;
         const database=fileService.Read();
         const mangaIdx = database.mangas.findIndex(f => f.id == id);
@@ -62,7 +62,24 @@ class mangaController{
         fileService.Write(database);
         return res.redirect('/manga');
     }
-    static add_review(req,res){
+    static async editar(req,res){
+        const { id } = req.params;
+        const {manganame,mangaimage,sinopse}=req.body;
+        const database=fileService.Read();
+        const manga_to_change=database.mangas.filter(f=> f.id==id)[0]
+        if(manganame) manga_to_change.name=manganame
+        if(mangaimage) manga_to_change.image=mangaimage
+        if(sinopse) manga_to_change.sinopse=sinopse
+        fileService.Write(database);
+        res.redirect(`/manga/${id}`);
+    }
+    static async mostrar_editar(req,res){
+        const { id } = req.params;
+        const database=fileService.Read();
+        const manga = database.mangas.filter(f => f.id == id)[0];
+        res.render('manga_mostrar_editar.ejs',{manga:manga,user:req.session.user});
+    }
+    static async add_review(req,res){
         const {mangaid,userid,review}=req.body
         const database=fileService.Read();
         const manga=database.mangas.find(manga=> manga.id==mangaid);
@@ -81,7 +98,7 @@ class mangaController{
             res.redirect(`/manga/${manga.id}`);
         }
     }
-    static gerenciar_mangas(req,res){
+    static async gerenciar_mangas(req,res){
         const database=fileService.Read();
         const mangas=database.mangas;
         const user=req.session.user

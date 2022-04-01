@@ -1,7 +1,7 @@
 const fileService=require('../utils/fileService');
 const { hashSync,compareSync} = require('bcrypt');
 class UserController{
-    static cadastrar(req,res){
+    static async cadastrar(req,res){
         let {email,password,image,name}=req.body;
         const database=fileService.Read();
         let lastid=database.users.length+1;
@@ -21,7 +21,7 @@ class UserController{
         fileService.Write(database);
         res.redirect('/');
     }
-    static login(req,res){
+    static async login(req,res){
         const database=fileService.Read();
         const {email,password}=req.body;
         const users=database.users;
@@ -41,7 +41,7 @@ class UserController{
             res.redirect('/login.html');
         }
     }
-    static logoff(req,res){
+    static async logoff(req,res){
         if(req.session.user){
             req.session.user=null;
             req.session.destroy();
@@ -49,20 +49,20 @@ class UserController{
         }
         res.redirect('/');
     }
-    static getUserPerfilSelf(req,res){  
+    static async getUserPerfilSelf(req,res){  
         console.log(req.session.user);
         res.render('perfil.ejs',{user:req.session.user});
     }
-    static getUserPerfil(req,res){
-        res.status(200).json(req.params);
+    static async getUserPerfil(req,res){
+        //res.render('perfil.ejs',{user:req.session.user});
     }
-    static getUsersManager(req,res){
+    static async getUsersManager(req,res){
         const database=fileService.Read();
         const users=database.users;
         const userSelf=req.session.user;
         res.render('gerenciar-users.ejs',{users:users,user:userSelf});
     }
-    static deletar(req,res){
+    static async deletar(req,res){
         const { id } = req.params;
         const user=req.session.user;
         const database=fileService.Read();

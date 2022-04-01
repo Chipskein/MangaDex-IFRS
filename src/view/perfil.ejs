@@ -2,6 +2,11 @@
 <html lang="pt-BR">
 <%- include('includes/head.ejs',{title:"Mangadex | Me"})%>
 <body>
-    
+    <header>
+        <%- include('includes/navbar.ejs',{user:user})%>
+    </header>
+    <article class="main">
+        <%- include('includes/user-detalhar-card.ejs',{edit:true,user:user})%>
+    </article>
 </body>
 </html>

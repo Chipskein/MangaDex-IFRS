@@ -231,8 +231,22 @@ article{
 	border-radius: 50%;
     border: 3px solid var(--primary-color);
 }
-.user-detalhes{
-
+.manga-card-edit-button{
+    color: rgb(147, 194, 76);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100px;
+    height: 40px;
+    border: 2px solid rgb(147, 194, 76);
+    background-color: white;
+    font-weight: bolder;
+    margin-left: 2%;
+}
+.manga-card-edit-button:hover{
+    color: white;
+    background-color: rgb(147, 194, 76);
+    border: 2px solid white;
 }
 
 .review-card{
