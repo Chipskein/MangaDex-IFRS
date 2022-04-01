@@ -49,12 +49,13 @@ class UserController{
         }
         res.redirect('/');
     }
-    static async getUserPerfilSelf(req,res){  
-        console.log(req.session.user);
-        res.render('perfil.ejs',{user:req.session.user});
-    }
     static async getUserPerfil(req,res){
-        //res.render('perfil.ejs',{user:req.session.user});
+        const {id}=req.params;
+        const database=fileService.Read();
+        let self=false
+        const user=database.users.filter(user=>user.id==id)[0];
+        if(req.session.user&&req.session.user.id==user.id) self=true;       
+        res.render('perfil.ejs',{self:self,user:user,session_user:req.session.user});
     }
     static async getUsersManager(req,res){
         const database=fileService.Read();
@@ -73,6 +74,28 @@ class UserController{
             return res.redirect('/users/logoff');
         }
         return res.redirect('/users/gerenciar');
+    }
+    static async editar(req,res){
+        const {id}=req.params;
+        const {email,name,password,image}=req.body;
+        const database=fileService.Read();
+        const user=database.users.filter(u=>u.id==id)[0];
+        if(email) user.email=email;
+        if(name) user.name=name;
+        if(image) user.image=image;
+        if(password){
+            const hashPassword=hashSync(password,10);
+            user.password=hashPassword;
+        }
+        req.session.user=user;
+        fileService.Write(database);
+        res.redirect(`/users/${id}`);
+    }
+    static async mostrar_editar(req,res){
+        const { id } = req.params;
+        const database=fileService.Read();
+        const user = database.users.filter(f => f.id == id)[0];
+        res.render('user_mostrar_editar.ejs',{user:user});
     }
 }
 module.exports=UserController;

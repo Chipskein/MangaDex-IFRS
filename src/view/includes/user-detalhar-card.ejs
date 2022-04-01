@@ -11,11 +11,11 @@
             <p>Created at:<%=new Date(user.created).toDateString()%></p>
             <p>Update at:<%=new Date(user.updated).toDateString()%></p>
             <div style="display: flex; flex-direction: row;">
-                <a href="/users/delete/<%=user.id%>" class="manga-card-delete-button">
-                    Delete
-                </a>
                 <% if(edit){ %>
-                    <a href="/user/edit/<%=user.id%>" class="manga-card-edit-button">
+                    <a href="/users/delete/<%=user.id%>" class="manga-card-delete-button">
+                        Delete
+                    </a>
+                    <a href="/users/edit/<%=user.id%>" class="manga-card-edit-button">
                         Edit
                     </a>
                 <%}%>

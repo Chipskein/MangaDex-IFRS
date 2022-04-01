@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+    <%- include('includes/head.ejs',{title:"Mangadex | Editar"})%>
+<body>
+    <div class="manga-form-container">
+        <form class="manga-form" action="" method="POST">
+            <div>
+                <div>
+                    <img class=logo src="/imgs/icon.png" alt="">
+                    <h1 class="title">MangaDex</h1>
+                </div>
+            </div>
+            <label for="email">
+                Email:<br><input placeholder="email@example.com"class="manga-form-input" type="email" name="email" value="<%=user.email%>" required>
+            </label>
+            <label for="name">
+                Name:<br><input placeholder="Ex:seila man"class="manga-form-input" type="text" name="name" value="<%=user.name%>" required>
+            </label>
+            <label for="password">
+                Password:<br><input placeholder="New Password" class="manga-form-input" type="password" name="password" >
+            </label>
+            <label for="image">
+                Image:<br><input placeholder="Image(link)" class="manga-form-input" type="text" value="<%=user.image%>" name="image">
+            </label>
+            <div>
+                <input type="submit" value="Register" class="manga-form-submit">
+            </div>
+            <br>
+        </form>
+    </div>
+</body>
+</html>

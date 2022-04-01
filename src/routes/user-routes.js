@@ -10,8 +10,10 @@ router.post('/cadastrar',userController.cadastrar);
 router.post('/login',userController.login);
 //detalhes
 router.get('/gerenciar',auth.disableCache,auth.isLogged,auth.isAdmin,userController.getUsersManager)
-router.get('/me',auth.disableCache,auth.isLogged,userController.getUserPerfilSelf)
 router.get('/:id',auth.disableCache,auth.isLogged,userController.getUserPerfil);
+//remover
+router.get('/edit/:id',auth.disableCache,auth.isLogged,userController.mostrar_editar);
+router.post('/edit/:id',auth.disableCache,auth.isLogged,userController.editar);
 //remover
 router.get('/delete/:id',auth.disableCache,auth.isLogged,auth.isAdmin,userController.deletar);
 module.exports=router;
