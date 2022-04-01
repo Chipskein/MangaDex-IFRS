@@ -39,7 +39,13 @@ class reviewController{
         res.status(200).json("editar");
     }
     static async deletar(req,res){
-        res.status(200).json("deletar");
+        const {mangaid,id}=req.params;
+        const database=fileService.Read();
+        const manga=database.mangas.filter(m=>m.id==mangaid)[0];
+        const reviewIdx = manga.reviews.findIndex(f => f.id == id);
+        manga.reviews.splice(reviewIdx, 1);
+        fileService.Write(database);
+        return res.redirect(`/review/${req.session.user.id}`);
     }
    
 }
