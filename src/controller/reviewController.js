@@ -50,6 +50,7 @@ class reviewController{
         const manga=database.mangas.filter(m=>m.id==mangaid)[0];
         const reviewIdx = manga.reviews.findIndex(f => f.id == id);
         manga.reviews[reviewIdx].text=txt;
+        manga.reviews[reviewIdx].updated=new Date();
         fileService.Write(database);
         res.redirect(`/review/${user.id}`);
     }

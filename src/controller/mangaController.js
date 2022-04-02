@@ -14,7 +14,7 @@ class mangaController{
         return res.render('cadastrar-manga.ejs');
     }
     static async cadastrar(req,res){
-        const {manganame,mangaimage,sinopse}=req.body;
+        const {manganame,mangaimage,sinopse,genres,authors}=req.body;
         const database=fileService.Read();
         const manga={
             id:nanoid(),
@@ -23,7 +23,8 @@ class mangaController{
             sinopse:sinopse,
             created:new Date(),
             updated:new Date(),
-            qt_view:0,
+            genres:genres,
+            authors:authors,
             reviews:[]
         }
         database.mangas.push(manga);
@@ -65,12 +66,15 @@ class mangaController{
     }
     static async editar(req,res){
         const { id } = req.params;
-        const {manganame,mangaimage,sinopse}=req.body;
+        const {manganame,mangaimage,sinopse,genres,authors}=req.body;
         const database=fileService.Read();
         const manga_to_change=database.mangas.filter(f=> f.id==id)[0]
         if(manganame) manga_to_change.name=manganame
         if(mangaimage) manga_to_change.image=mangaimage
         if(sinopse) manga_to_change.sinopse=sinopse
+        if(genres) manga_to_change.genres=genres
+        if(authors) manga_to_change.authors=authors
+        manga.updated=new Date();
         fileService.Write(database);
         res.redirect(`/manga/${id}`);
     }

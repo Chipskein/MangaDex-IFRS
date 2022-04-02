@@ -90,6 +90,7 @@ class UserController{
         }
         //caso for o mesmo usuario->atualiza sessão
         if(req.session.user.id==id) req.session.user=user;
+        user.updated=new Date();
         //update all reviews from user;
         database.mangas.forEach(manga=>{
             const tmp=manga.reviews.filter(review=>review.user.id==id)

@@ -16,11 +16,15 @@
             <label for="mangaimage">
                 Imagem(link):<br><input placeholder="Link da Imagem" class="manga-form-input" type="text" name="mangaimage" value="<%=manga.image%>" required>
             </label>
+            <label for="genres">
+                Genres:<br><input placeholder="Link da Imagem" class="manga-form-input" type="text" name="genres" value="<%=manga.genres%>" required>
+            </label>
+            <label for="authors">
+                Authors:<br><input placeholder="Link da Imagem" class="manga-form-input" type="text" name="authors" value="<%=manga.authors%>" required>
+            </label>
             <label for="sinopse">
                 Sinopse:<br>
-                <textarea name="sinopse" class="manga-form-textarea" cols="30" rows="6" placeholder="Sinopse">
-                    <%=manga.sinopse%>
-                </textarea>
+                <input name="sinopse" class="manga-form-input" placeholder="Sinopse" value="<%=manga.sinopse%>">
             </label>
             <div>
                 <input type="submit" value="Editar" class="manga-form-submit">
