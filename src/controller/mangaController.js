@@ -54,7 +54,7 @@ class mangaController{
         const database=fileService.Read();
         database.mangas.forEach(data=>{
             if (data.id==id){
-                data.reviews.reverse();
+                data.reviews.sort((a,b)=>{return new Date(b.updated)-new Date(a.updated)})
                 manga=data;
             }
         })

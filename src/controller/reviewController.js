@@ -15,6 +15,7 @@ class reviewController{
             })            
             userReviews.push(...tmp);
         })
+        userReviews.sort((a,b)=>{return new Date(b.updated)- new Date(a.updated)});
         res.render('reviews.ejs',{user:req.session.user,reviews:userReviews});
     }
     static async add_review(req,res){
