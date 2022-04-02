@@ -5,9 +5,14 @@ class mangaController{
     static async listar(req,res){
         const database=fileService.Read();
         let mangas=database.mangas;
-        const filters={...req.query};
-        if(filters.data_checkbox=='on') mangas=mangas.filter(manga=>new Date(manga.updated)<=new Date(filters.data2)&&new Date(manga.updated)>=new Date(filters.data1));
-        if(filters.reviews_checkbox=='on') mangas=mangas.filter(manga=>manga.reviews.length<=filters.reviews2&&manga.reviews.length>=filters.reviews1);
+        let { order }={...req.query};
+        if(!order) order='desc';
+        if(order=='desc'){
+            mangas=mangas.sort((a,b)=>{return new Date(b.updated)-new Date(a.updated)})
+        }
+        if(order=='asc'){
+            mangas=mangas.sort((a,b)=>{return new Date(a.updated)-new Date(b.updated)})
+        }
         res.render('listar.ejs',{gerenciar:false,user:req.session.user,mangas:mangas});
     }
     static async mostrar_cadastrar(req,res){

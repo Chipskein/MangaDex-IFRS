@@ -9,26 +9,8 @@
         <%if(!gerenciar){%>
             <br>
             <div align="center">
-                <h1>Filtros</h1>
-                <form>
-                    <label>
-                        <input type="checkbox" name="data_checkbox" id="filter-data-checkbox"> Por Data:
-                    </label>
-                    <br>
-                    <label>
-                        <input type="checkbox" name="reviews_checkbox" id="filter-reviews-checkbox"> Por Qt de Reviews
-                    </label>
-                    <br>
-                    <label id="filter-label-inputs-date" style="display: none;">
-                        Entre <input type="date" name="data1" class="filter-input"> e <input class="filter-input" name="data2" type="date">
-                    </label>
-                    <br>
-                    <label id="filter-label-inputs-review" style="display: none;">
-                        Min:<input type="number" name="reviews1" class="filter-input2" min="0"> Max:<input name="reviews2" class="filter-input2" type="number" min="1">
-                    </label>
-                    <br>
-                    <input type="submit" style="display:none;" value="Filtrar" class="filter-submit" id="filter-submit">
-                </form>
+                <h1>Ordernar Por</h1>
+                <a href="/manga?order=desc">Mais Recente</a> <a href="/manga?order=asc">Mais Antigo</a>
             </div>
         <%} else{%>
             <br>
@@ -56,8 +38,6 @@
         const checkbox_data=document.getElementById('filter-data-checkbox');
         const label_data=document.getElementById('filter-label-inputs-date');
         const submit=document.getElementById('filter-submit');
-        const checkbox_reviews=document.getElementById('filter-reviews-checkbox');
-        const label_reviews=document.getElementById('filter-label-inputs-review');
         checkbox_data.onchange=()=>{
             if(checkbox_data.checked){
                 label_data.style="display:block;"
@@ -65,23 +45,7 @@
             }
             else{
                 label_data.style="display:none;"
-                if(!checkbox_reviews.checked){
-                    submit.style="display:none;";
-                }
-
-            }
-        }
-        checkbox_reviews.onchange=()=>{
-            if(checkbox_reviews.checked){
-                label_reviews.style="display:block;"
-                submit.style="display:block;";
-            }
-            else{
-                label_reviews.style="display:none;"
-                if(!checkbox_data.checked){
-                    submit.style="display:none;";
-                }
-
+                submit.style="display:none;";
             }
         }
     </script>
