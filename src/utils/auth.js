@@ -4,7 +4,7 @@ module.exports={
         try{    
             const session=req.session;
             if(session.user!=null) next();
-            else throw Error('401 | Você não está logado')
+            else throw Error('401 | You need be logged to access this resource')
         }
         catch(err){    
             res.render('error.ejs',{error:err})
@@ -14,9 +14,19 @@ module.exports={
         try{
            const user=req.session.user
            if(user.role=='admin') next();
-           else throw Error('401 | Você não tem Autorização') 
+           else throw Error('401 | Unauthorized') 
         }
         catch(err){
+            res.render('error.ejs',{error:err})
+        }
+    },
+    isNotLogged:(req,res,next)=>{
+        try{    
+            const session=req.session;
+            if(session.user==null) next();
+            else throw Error('200 | You are already Logged')
+        }
+        catch(err){    
             res.render('error.ejs',{error:err})
         }
     },

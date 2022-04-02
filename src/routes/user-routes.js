@@ -8,8 +8,11 @@ router.get('/promote/:id',auth.disableCache,auth.isLogged,auth.isAdmin,userContr
 //user
 router.get('/logoff',auth.disableCache,auth.isLogged,userController.logoff);
 //cadastrar
-router.post('/cadastrar',userController.cadastrar);
-router.post('/login',userController.login);
+router.post('/register',auth.disableCache,auth.isNotLogged,userController.cadastrar);
+router.post('/login',auth.disableCache,auth.isNotLogged,userController.login);
+
+router.get('/register',auth.disableCache,auth.isNotLogged,userController.mostrar_cadastrar);
+router.get('/login',auth.disableCache,auth.isNotLogged,userController.mostrar_login);
 //detalhes
 router.get('/gerenciar',auth.disableCache,auth.isLogged,auth.isAdmin,userController.getUsersManager)
 router.get('/:id',auth.disableCache,auth.isLogged,userController.getUserPerfil);

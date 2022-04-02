@@ -6,21 +6,27 @@ class UserController{
     static async cadastrar(req,res){
         let {email,password,image,name}=req.body;
         const database=fileService.Read();
-        const hashPassword=hashSync(password,10);
-        if(!image) image='/imgs/woman.png';
-        const user={
-            id:nanoid(),
-            role:"user",
-            name:name,
-            email:email,
-            password:hashPassword,
-            image:image,
-            created:new Date(),
-            updated:new Date()
+        const UserExists=database.users.find(user=>user.email==email);
+        if(!UserExists){
+            const hashPassword=hashSync(password,10);
+            if(!image) image='/imgs/woman.png';
+            const user={
+                id:nanoid(),
+                role:"user",
+                name:name,
+                email:email,
+                password:hashPassword,
+                image:image,
+                created:new Date(),
+                updated:new Date()
+            }
+            database.users.push(user);
+            fileService.Write(database);
+            res.redirect('/');
         }
-        database.users.push(user);
-        fileService.Write(database);
-        res.redirect('/');
+        else{
+            res.render('register.ejs',{error:{message:"User Already Exists"}});
+        }
     }
     static async login(req,res){
         const database=fileService.Read();
@@ -34,12 +40,11 @@ class UserController{
                 res.redirect('/');
             }
             else{
-                console.log("SENHA INVÀLIDA");
+                res.render('login.ejs',{error:{message:"Invalid Credentials"}});
             }
         }
         else{
-            console.log('user nao encontrado')
-            res.redirect('/login.html');
+            res.render('login.ejs',{error:{message:"User Don't Exists"}});
         }
     }
     static async logoff(req,res){
@@ -106,6 +111,12 @@ class UserController{
         const database=fileService.Read();
         const user = database.users.filter(f => f.id == id)[0];
         res.render('user_mostrar_editar.ejs',{user:user});
+    }
+    static async mostrar_cadastrar(req,res){
+        res.render('register.ejs',{error:false});
+    }
+    static async mostrar_login(req,res){
+        res.render('login.ejs',{error:false});
     }
     static async promote(req,res){
         const { id } = req.params;
