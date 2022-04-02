@@ -18,6 +18,17 @@
                     <a href="/users/edit/<%=user.id%>" class="manga-card-edit-button">
                         Edit
                     </a>
+                    <%if(self){ %>
+                        <% if(user.role=='admin'){ %>
+                            <a href="/users/despromote/<%=user.id%>" class="manga-card-delete-button" style="margin-left: 2%;">
+                                Despromote
+                            </a>
+                        <%} else{%>
+                            <a href="/users/promote/<%=user.id%>" class="manga-card-edit-button">
+                                Promote
+                            </a>
+                        <%}%>
+                    <%}%>
                 <%}%>
             </div>
         </div>

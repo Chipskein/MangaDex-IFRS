@@ -107,5 +107,25 @@ class UserController{
         const user = database.users.filter(f => f.id == id)[0];
         res.render('user_mostrar_editar.ejs',{user:user});
     }
+    static async promote(req,res){
+        const { id } = req.params;
+        const database=fileService.Read();
+        const user = database.users.filter(f => f.id == id)[0];
+        user.role='admin';
+        fileService.Write(database);
+        res.redirect('/users/gerenciar');
+    }
+    static async despromote(req,res){
+        const { id } = req.params;
+        const database=fileService.Read();
+        const user = database.users.filter(f => f.id == id)[0];
+        user.role='user';
+        fileService.Write(database);
+        if(id==req.session.user.id){
+            req.session.user=user
+            res.redirect(`/manga`);
+        }
+        else res.redirect('/users/gerenciar');
+    }
 }
 module.exports=UserController;

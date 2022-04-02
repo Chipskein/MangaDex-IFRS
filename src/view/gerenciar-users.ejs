@@ -7,7 +7,7 @@
     </header>
     <article class="main">
         <% users.forEach(user=>{ %>
-            <%- include('includes/user-detalhar-card.ejs',{edit:true,user:user})%> 
+            <%- include('includes/user-detalhar-card.ejs',{edit:true,user:user,self:true})%> 
         <%})%>
     </article>
 </body>
