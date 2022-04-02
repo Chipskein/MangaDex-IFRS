@@ -13,6 +13,7 @@
                 <a onClick="url('order','desc')" class="orderby-button">Mais Recente</a>
                 <a onClick="url('order','asc')" class="orderby-button">Mais Antigo</a>
             </div>
+            <br>
         <%} else{%>
             <br>
             <div align="center">
@@ -40,7 +41,12 @@
                         <%- include('includes/manga-detalhes.ejs',{user:user,manga:manga})%> 
                     <%})%>
             <% } %> 
-        <% } %> 
+        <% } else{%>
+            <div align="center">
+                <h3>We didn't find any manga</h3>
+            </div>
+            <br>
+        <%}%> 
     </article>
     <script>
         function url(campo,valor) {
