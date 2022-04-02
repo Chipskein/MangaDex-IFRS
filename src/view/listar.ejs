@@ -10,9 +10,16 @@
             <br>
             <div align="center">
                 <h1>Ordernar Por</h1>
-                <a href="/manga?order=desc">Mais Recente</a> <a href="/manga?order=asc">Mais Antigo</a>
+                <a href="/manga?order=desc" class="orderby-button">Mais Recente</a>
+                <a href="/manga?order=asc" class="orderby-button">Mais Antigo</a>
             </div>
         <%} else{%>
+            <br>
+            <div align="center">
+                <h1>Ordernar Por</h1>
+                <a href="/manga/gerenciar?order=desc" class="orderby-button">Mais Recente</a>
+                <a href="/manga/gerenciar?order=asc" class="orderby-button">Mais Antigo</a>
+            </div>
             <br>
             <div align="center">
                 <a href="/manga/cadastrar">
@@ -22,6 +29,7 @@
                 </a>
             </div>
          <%}%> 
+         
         <% if(mangas&&mangas.length>0){ %>
             <% if(!gerenciar){ %>
                     <% mangas.forEach(manga=>{ %>

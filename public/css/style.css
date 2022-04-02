@@ -126,6 +126,9 @@ article{
     display: flex;
     box-shadow: 5px 5px 5px 5px rgba(0, 0, 0, 0.326);
 }
+.orderby-button{
+    margin: 2%;
+}
 .manga-card-div{
     width: 40%;
     margin: 2%;

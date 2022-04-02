@@ -91,8 +91,16 @@ class mangaController{
     }
     static async gerenciar_mangas(req,res){
         const database=fileService.Read();
-        const mangas=database.mangas;
+        let mangas=database.mangas;
         const user=req.session.user
+        let { order }={...req.query};
+        if(!order) order='desc';
+        if(order=='desc'){
+            mangas=mangas.sort((a,b)=>{return new Date(b.updated)-new Date(a.updated)})
+        }
+        if(order=='asc'){
+            mangas=mangas.sort((a,b)=>{return new Date(a.updated)-new Date(b.updated)})
+        }
         res.render('listar.ejs',{gerenciar:true,user:req.session.user,mangas})
     }
 }
