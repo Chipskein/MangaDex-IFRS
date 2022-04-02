@@ -88,7 +88,15 @@ class UserController{
             const hashPassword=hashSync(password,10);
             user.password=hashPassword;
         }
-        req.session.user=user;
+        //caso for o mesmo usuario->atualiza sessão
+        if(req.session.user.id==id) req.session.user=user;
+        //update all reviews from user;
+        database.mangas.forEach(manga=>{
+            const tmp=manga.reviews.filter(review=>review.user.id==id)
+            tmp.forEach(review=>{
+                review.user=user;
+            })            
+        })
         fileService.Write(database);
         res.redirect(`/users/${id}`);
     }
