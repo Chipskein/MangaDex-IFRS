@@ -29,7 +29,7 @@ app.use(express.static('public'));
 
 // Routes
 app.use('*', (req, res, next) => {
-    console.log(`Request recebido para ${req.baseUrl} as ${new Date()}`);
+    console.log(`~ ${req.baseUrl} as ${req.method} ${new Date()}`);
     next();
 })
 

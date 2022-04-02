@@ -343,3 +343,8 @@ article{
     display: flex;
     flex-direction: row;
 }
+.review-card-input-container{
+    display: flex;
+    flex-direction: row;
+    margin: 2%;
+}

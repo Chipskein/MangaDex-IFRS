@@ -35,13 +35,23 @@ class reviewController{
             res.redirect(`/manga/${manga.id}`);
         }
     }
-    static async editar(req,res){
+    static async mostrar_editar(req,res){
         const {mangaid,id}=req.params;
         const database=fileService.Read();
         const manga=database.mangas.filter(m=>m.id==mangaid)[0];
         const review = manga.reviews.filter(f => f.id == id)[0];
-
         res.render('review-editar.ejs',{user:req.session.user,manga:manga,review:review})
+    }
+    static async editar(req,res){
+        const {mangaid,id}=req.params;
+        const { txt }=req.body;
+        const user=req.session.user;
+        const database=fileService.Read();
+        const manga=database.mangas.filter(m=>m.id==mangaid)[0];
+        const reviewIdx = manga.reviews.findIndex(f => f.id == id);
+        manga.reviews[reviewIdx].text=txt;
+        fileService.Write(database);
+        res.redirect(`/review/${user.id}`);
     }
     static async deletar(req,res){
         const {mangaid,id}=req.params;

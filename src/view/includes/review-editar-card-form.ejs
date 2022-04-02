@@ -1,0 +1,28 @@
+<div>
+    <% if(manager){ %> 
+        <h2 style="margin: 2%;">Review Feita no manga <a href="/manga/<%=review.manga%>"><i><%=review.manganame%></i></a></h2>
+    <%}%>
+    <div class="review-card">
+        <a href="/users/<%=review.user.id%>">
+            <div class='user-img' style="background-image: url(<%=review.user.image%>)"></div>
+        </a>
+        <form action="" method="post">
+            <div class="review-texts">
+                <div class="review-texts-card">
+                    <a href="/users/<%=review.user.id%>">
+                        <h3>
+                            <%=review.user.name%>
+                        </h3>
+                        <h6 class="created-at">Created at <%=new Date(review.created).toString().substring(4,24)%></h6>
+                    </a>
+                </div>
+                <div class="review-card-input-container">
+                    <input type="text" class="manga-form-input" value="<%=review.text%>" name="txt">
+                    <input type="submit" class="manga-card-edit-button" value="Alterar">
+                </div>
+            </div>
+        </form>
+    </div>
+   
+    <br>
+</div>
