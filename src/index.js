@@ -3,7 +3,7 @@ console.clear();
 const express=require('express');
 const session=require('express-session');
 const app=express();
-const port=8080;
+const port=process.env.PORT || 8080;
 
 //config session
 app.use(session({
