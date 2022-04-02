@@ -124,7 +124,7 @@ article{
 .manga-card{
     margin: 2%;
     display: flex;
-    border-bottom: solid 2px var(--primary-color);
+    box-shadow: 5px 5px 5px 5px rgba(0, 0, 0, 0.326);
 }
 .manga-card-div{
     width: 40%;
