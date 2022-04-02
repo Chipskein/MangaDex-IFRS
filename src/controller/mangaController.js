@@ -74,7 +74,7 @@ class mangaController{
         if(sinopse) manga_to_change.sinopse=sinopse
         if(genres) manga_to_change.genres=genres
         if(authors) manga_to_change.authors=authors
-        manga.updated=new Date();
+        manga_to_change.updated=new Date();
         fileService.Write(database);
         res.redirect(`/manga/${id}`);
     }
