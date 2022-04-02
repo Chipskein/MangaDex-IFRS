@@ -23,7 +23,6 @@ router.post('/edit/:id',auth.isLogged,auth.isAdmin,mangaController.editar);
 router.get('/',mangaController.listar);
 //detalhes
 router.get('/:id',mangaController.detalhar);
-//pesquisar
-router.post('/',mangaController.pesquisar);
+
 
 module.exports=router;

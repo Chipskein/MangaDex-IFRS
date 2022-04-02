@@ -5,7 +5,17 @@ class mangaController{
     static async listar(req,res){
         const database=fileService.Read();
         let mangas=database.mangas;
-        let { order }={...req.query};
+        let { searchText,order }={...req.query};
+        let mangas_filter=[];
+        if(searchText){
+            let regex=new RegExp(`${searchText.toLowerCase()}`);
+            database.mangas.forEach(manga=>{
+                if(regex.test(manga.name.toLowerCase())){
+                    mangas_filter.push(manga);
+                }
+            })
+            mangas=mangas_filter;
+        }
         if(!order) order='desc';
         if(order=='desc'){
             mangas=mangas.sort((a,b)=>{return new Date(b.updated)-new Date(a.updated)})

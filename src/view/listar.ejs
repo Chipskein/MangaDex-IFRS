@@ -10,15 +10,15 @@
             <br>
             <div align="center">
                 <h1>Ordernar Por</h1>
-                <a href="/manga?order=desc" class="orderby-button">Mais Recente</a>
-                <a href="/manga?order=asc" class="orderby-button">Mais Antigo</a>
+                <a onClick="url('order','desc')" class="orderby-button">Mais Recente</a>
+                <a onClick="url('order','asc')" class="orderby-button">Mais Antigo</a>
             </div>
         <%} else{%>
             <br>
             <div align="center">
                 <h1>Ordernar Por</h1>
-                <a href="/manga/gerenciar?order=desc" class="orderby-button">Mais Recente</a>
-                <a href="/manga/gerenciar?order=asc" class="orderby-button">Mais Antigo</a>
+                <a onClick="url('order','desc')" class="orderby-button">Mais Recente</a>
+                <a onClick="url('order','asc')"  class="orderby-button">Mais Antigo</a>
             </div>
             <br>
             <div align="center">
@@ -43,17 +43,27 @@
         <% } %> 
     </article>
     <script>
-        const checkbox_data=document.getElementById('filter-data-checkbox');
-        const label_data=document.getElementById('filter-label-inputs-date');
-        const submit=document.getElementById('filter-submit');
-        checkbox_data.onchange=()=>{
-            if(checkbox_data.checked){
-                label_data.style="display:block;"
-                submit.style="display:block;";
+        function url(campo,valor) {
+            valor=valor.replaceAll(" ","+")
+            if(window.location.href.indexOf('?')==-1){
+                window.location.href+=`?${campo}=${valor}`;
             }
             else{
-                label_data.style="display:none;"
-                submit.style="display:none;";
+                let searchcampo=window.location.href.search(campo)
+                if(searchcampo==-1) window.location.href+=`&${campo}=${valor}`;
+                else {
+                    let base_url=window.location.href.split('?')[0];
+                    let query=window.location.href.split('?')[1];
+                    let newparams=[];
+                    query.split('&').forEach(param => {
+                        tmp=param.split('=');
+                        if(tmp[0]==campo) tmp[1]=valor;
+                        tmp=tmp.join('=')
+                        newparams.push(tmp);
+                    })
+                    newparams=newparams.join('&');
+                    window.location.href=base_url+=`?${newparams}`;
+                }
             }
         }
     </script>
