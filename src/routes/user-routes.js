@@ -17,5 +17,5 @@ router.get('/:id',auth.disableCache,auth.isLogged,userController.getUserPerfil);
 router.get('/edit/:id',auth.disableCache,auth.isLogged,userController.mostrar_editar);
 router.post('/edit/:id',auth.disableCache,auth.isLogged,userController.editar);
 //remover
-router.get('/delete/:id',auth.disableCache,auth.isLogged,auth.isAdmin,userController.deletar);
+router.get('/delete/:id',auth.disableCache,auth.isLogged,userController.deletar);
 module.exports=router;
