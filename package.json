@@ -10,14 +10,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Chipskein/MangaDex.git"
+    "url": "git+https://github.com/Chipskein/MangaDex-IFRS.git"
   },
   "author": "Chipskein",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/Chipskein/MangaDex/issues"
+    "url": "https://github.com/Chipskein/MangaDex-IFRS/issues"
   },
-  "homepage": "https://github.com/Chipskein/MangaDex#readme",
+  "homepage": "https://github.com/Chipskein/MangaDex-IFRS#readme",
   "dependencies": {
     "bcrypt": "^5.0.1",
     "ejs": "^3.1.6",
